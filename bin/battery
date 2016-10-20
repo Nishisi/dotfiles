@@ -1,0 +1,66 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use feature 'say';
+
+my $BATTERY_DANGER = 20;
+
+# get_battery returns remaining battery
+# 残りのバッテリー残量を返す関数
+sub get_battery() {
+    my $current_bat;
+    my $percentage;
+
+    $current_bat=qx/pmset -g ps | grep -E -o '[0-9]\+%' | tr -d "%" | tr -d "\n"/;
+    #say $current_bat."%";
+    return $current_bat;
+}
+
+# is_charging return true if the battery is charging
+sub is_charging() {
+    qx(pmset -g ps | grep -E "Battery Power|charged" >/dev/null);
+    if ($? == 0) {
+	return 0;
+    } else {
+	return 1;
+    }
+}
+
+# battery_color_tmux colourized the battery level for tmux
+sub battery_color_tmux() {
+    my $percentage = get_battery();
+
+    my $b_icon = ($percentage > 66) ? "[███]" :
+                 ($percentage < 34) ? "[█  ]" :
+		                      "[██ ]" ; 
+
+    if (is_charging) {
+	say "#[fg=colour46]$percentage%[ ϟ ]#[default]";
+    } else {
+	# percentage > BATTERY_DANGER
+	if ($percentage >= $BATTERY_DANGER) {
+	   say "#[fg=blue]$percentage%$b_icon#[default]";
+	} else {
+	   say "#[fg=red]$percentage%$b_icon#[default]";
+	}
+    }
+}
+
+# check arguments   
+if (@ARGV) {
+    if ($ARGV[0] eq "-h") {
+	say "Usage: battery";
+    } elsif ($ARGV[0] eq "--ansi") {
+	say "battery";
+    } elsif ($ARGV[0] eq "--tmux") {
+	battery_color_tmux();
+	exit $?;
+    } elsif ($ARGV[0] eq "-r") {
+	say "remain";
+    } else {
+	say "$ARGV[0]: unknow option";
+    }
+}
+
+get_battery();
+  
