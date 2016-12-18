@@ -170,6 +170,7 @@ call dein#add('ctrlpvim/ctrlp.vim')
 " =======================================================
 
 call dein#add('fatih/vim-go')
+let g:go_fmt_command = "goimports"
 
 
 " =======================================================
@@ -194,6 +195,6 @@ endif
 set t_ut=
 
 noremap! ¥ \
-noremap! \ ¥
+"noremap! \ ¥
 
 
