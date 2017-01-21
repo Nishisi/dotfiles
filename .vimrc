@@ -105,15 +105,17 @@ set laststatus=2
 call dein#add('nathanaelkane/vim-indent-guides',{'on_ft' : 'python'})
 
 let g:indent_guides_auto_colors=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=237
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=240
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=black
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=240
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven   ctermbg=black
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
+set ts=4 sw=4 noet
 
 " ====================================================
 
-call dein#add('davidhalter/jedi-vim')
+"call dein#add('davidhalter/jedi-vim')
 
 " ====================================================
 
@@ -142,7 +144,7 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
     exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
     exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('go', 'green', 'none', 'green', '#151515')
 call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
 call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
