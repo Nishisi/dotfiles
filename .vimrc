@@ -29,10 +29,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/e145735/.vim/repos/github.com/Shougo/dein.vim
+set runtimepath+=/Users/Nishiyama/.vim/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin('/Users/e145735/.vim')
+call dein#begin('/Users/Nishiyama/.vim')
 
 " Let dein manage dein
 " Required:
