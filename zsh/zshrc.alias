@@ -8,7 +8,7 @@ alias sl="ls"
 # }}}
 
 # icloud {{{
-alias icloud='cd /Users/nishiyama/Library/Mobile\ Documents/com~apple~CloudDocs'
+alias icloud='cd /Users/$USER/Library/Mobile\ Documents/com~apple~CloudDocs'
 # }}}
 
 # pip の一括アップグレード {{{
