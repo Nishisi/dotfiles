@@ -1,12 +1,15 @@
 set encoding=utf-8
-scriptencoding utf-8
+"scriptencoding utf-8
 
 " 行番号を表示
 set number
+
 " 検索語を強調表示
 set hlsearch
+
 " キーマップ：検索ハイライトの解除
 nnoremap <ESC><ESC> :<C-u>nohlsearch<CR>
+
 " 検索時に大文字・小文字を区別しない
 set ignorecase
 " カーソル行を強調する
@@ -117,16 +120,6 @@ set ts=4 sw=4 noet
 
 "call dein#add('davidhalter/jedi-vim')
 
-" ====================================================
-
-call dein#add('kannokanno/previm')
-
-"ブラウザの設定"
-let g:previm_open_cmd = 'open -a Firefox'
-
-" <F5>で編集中のファイルをブラウザで表示
-nmap <F5> :PrevimOpen<CR>
-
 " =====================================================
 
 "call dein#add('w0ng/vim-hybrid')
@@ -141,22 +134,27 @@ nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-call NERDTreeHighlightFile('go', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('pl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+"
+au VimEnter * call NERDTreeHighlightFile('yml', '44', 'none', 'green', '#151515')
+au VimEnter * call NERDTreeHighlightFile('go', '115', 'none', 'yellow', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('js', '5', 'none', '#ffa500', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('pl', '1', 'none', '#ffa500', '#151515')
+"au VimEnter * call NERDTreeHighlightFile('md', 'Magenta', 'none', '#ff00ff', '#151515')
+
+
+
 " =====================================================
 
 call dein#add('jistr/vim-nerdtree-tabs')
@@ -174,11 +172,22 @@ call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('fatih/vim-go')
 let g:go_fmt_command = "goimports"
 
+call dein#add('othree/html5.vim')
+
 
 " =======================================================
 
+call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+" =======================================================
+
+
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+call dein#load_toml("~/.vim/plugins.toml",{})
 
 " Required:
 call dein#end()
@@ -199,4 +208,6 @@ set t_ut=
 noremap! ¥ \
 "noremap! \ ¥
 
+"autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
+"autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
 

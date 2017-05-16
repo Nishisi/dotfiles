@@ -1,0 +1,29 @@
+# ls {{{
+alias ls="ls -G"
+alias la="ls -a"
+alias lf="ls -F"
+alias ll="ls -l"
+alias lla="ls -al"
+alias sl="ls"
+# }}}
+
+# icloud {{{
+alias icloud='cd /Users/nishiyama/Library/Mobile\ Documents/com~apple~CloudDocs'
+# }}}
+
+# pip の一括アップグレード {{{
+alias pip_up='pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U'
+# }}}
+
+# sublime setting {{{
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+# }}}
+
+# locate setting {{{
+alias updatedb='sudo /usr/libexec/locate.updatedb'
+# }}}
+#
+
+# update locate db
+alias updatedb='sudo /usr/libexec/locate.updatedb'
+
