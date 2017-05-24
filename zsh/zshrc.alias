@@ -22,8 +22,6 @@ alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 # locate setting {{{
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 # }}}
-#
 
-# update locate db
-alias updatedb='sudo /usr/libexec/locate.updatedb'
-
+# cd of peco
+alias pcd='cd $(ghq list -p | peco'
