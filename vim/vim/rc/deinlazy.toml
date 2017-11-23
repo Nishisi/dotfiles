@@ -1,4 +1,15 @@
 [[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+
+[[plugins]]
 repo = 'vim-perl/vim-perl'
 on_ft = 'perl'
 

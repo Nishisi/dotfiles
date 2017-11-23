@@ -4,25 +4,28 @@ set laststatus=2
 set encoding=utf-8
 "scriptencoding utf-8
 
+" -- View --
 " 行番号を表示 
 set number 
+" カーソル行を強調する
+set cursorline
+set visualbell
+set laststatus=2
+
 " 検索語を強調表示
 set hlsearch
+set smartindent
 
 " キーマップ：検索ハイライトの解除
 nnoremap <ESC><ESC> :<C-u>nohlsearch<CR>
 
 " 検索時に大文字・小文字を区別しない
 set ignorecase
-" カーソル行を強調する
-set cursorline
 
 "set indent
 set shiftwidth=4
 
 set backspace=indent,eol,start
-
-set guifont=Ricty:h18
 
 inoremap <silent> jj <ESC>
 inoremap <silent> っj <ESC>

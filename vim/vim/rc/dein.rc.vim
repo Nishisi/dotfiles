@@ -20,12 +20,7 @@ if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
     call dein#load_toml('~/.vim/rc/dein.toml',{'lazy':0})
     call dein#load_toml('~/.vim/rc/deinlazy.toml',{'lazy':1})
-    call dein#add('Shougo/dein.vim')
-    call dein#add('Shougo/neosnippet.vim')
-    call dein#add('Shougo/neosnippet')
-    call dein#add('Shougo/neosnippet-snippets')
     call dein#add('Shougo/unite.vim')
-    call dein#add('Shougo/neocomplete.vim')
 
     " COLOR 
     call dein#add('altercation/vim-colors-solarized')

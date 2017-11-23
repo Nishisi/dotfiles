@@ -2,7 +2,13 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'elzr/vim-json'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
