@@ -1,8 +1,5 @@
-let g:Powerline_symbols = 'fancy'
-set laststatus=2
-
+set t_Co=256
 set encoding=utf-8
-"scriptencoding utf-8
 
 " -- View --
 " 行番号を表示 
@@ -10,11 +7,11 @@ set number
 " カーソル行を強調する
 set cursorline
 set visualbell
-set laststatus=2
 
 " 検索語を強調表示
 set hlsearch
-set smartindent
+set laststatus=2
+set autoindent smartindent
 
 " キーマップ：検索ハイライトの解除
 nnoremap <ESC><ESC> :<C-u>nohlsearch<CR>
@@ -36,8 +33,6 @@ set background=dark
 "colorscheme molokai
 colorscheme kalisi
 let g:solarized_termcolors=256
-
-
 
 nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
 
@@ -71,10 +66,6 @@ let g:go_fmt_command = "goimports"
 
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
-
-
-
-
 
 noremap! ¥ \
 "noremap! \ ¥

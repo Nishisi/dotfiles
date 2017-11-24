@@ -12,3 +12,9 @@ repo = 'elzr/vim-json'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'alvan/vim-closetag'

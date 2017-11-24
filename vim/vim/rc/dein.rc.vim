@@ -32,7 +32,6 @@ if dein#load_state(s:dein_dir)
     call dein#add('jistr/vim-nerdtree-tabs')
     call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 
-
     call dein#end()
     call dein#save_state()
 endif
