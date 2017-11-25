@@ -13,6 +13,12 @@ alias lf="ls -F"
 alias ll="ls -lFh ${colorflag}"
 alias lla="ls -AF"
 alias sl="ls"
+
+alias du="du -h"
+alias df="df -h"
+alias su="su -l"
+alias mv="mv -i"
+alias rm="rm -i"
 # }}}
 
 # icloud {{{

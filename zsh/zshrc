@@ -10,8 +10,8 @@
 # source {{{
 typeset -U path cdpath fpath manpath
 
-# load files
-[[ -f ~/.aliases.zsh ]] && source ~/.aliases.zsh
+# source all .zsh files 
+for config ($HOME/.*.zsh) source $config
 
 ## Environment variable configuration
 #
@@ -29,30 +29,30 @@ esac
 #
 # set prompt
 #
-autoload -U colors; colors
-# 一般ユーザ時
-tmp_prompt="%F{cyan}[%n@%C]%f "
-#tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
-tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
-tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
-tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
+#autoload -U colors; colors
+## 一般ユーザ時
+#tmp_prompt="%F{cyan}[%n@%C]%f "
+##tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
+#tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
+#tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
+#tmp_sprompt="%{${fg[yellow]}%}%r is correct? [Yes, No, Abort, Edit]:%{${reset_color}%}"
+#
+## rootユーザ時(太字にし、アンダーバーをつける)
+#if [ ${UID} -eq 0 ]; then
+#  tmp_prompt="%B%U${tmp_prompt}%u%b"
+#  tmp_prompt2="%B%U${tmp_prompt2}%u%b"
+#  tmp_rprompt="%B%U${tmp_rprompt}%u%b"
+#  tmp_sprompt="%B%U${tmp_sprompt}%u%b"
+#fi
 
-# rootユーザ時(太字にし、アンダーバーをつける)
-if [ ${UID} -eq 0 ]; then
-  tmp_prompt="%B%U${tmp_prompt}%u%b"
-  tmp_prompt2="%B%U${tmp_prompt2}%u%b"
-  tmp_rprompt="%B%U${tmp_rprompt}%u%b"
-  tmp_sprompt="%B%U${tmp_sprompt}%u%b"
-fi
-
-PROMPT=$tmp_prompt    # 通常のプロンプト
-PROMPT2=$tmp_prompt2  # セカンダリのプロンプト(コマンドが2行以上の時に表示される)
-RPROMPT=$tmp_rprompt  # 右側のプロンプト
-SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
-# SSHログイン時のプロンプト
-[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-  PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
-;
+#PROMPT=$tmp_prompt    # 通常のプロンプト
+#PROMPT2=$tmp_prompt2  # セカンダリのプロンプト(コマンドが2行以上の時に表示される)
+#RPROMPT=$tmp_rprompt  # 右側のプロンプト
+#SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
+## SSHログイン時のプロンプト
+#[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+#  PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
+#;
 
 # option {{{
 setopt no_global_rcs
@@ -147,50 +147,41 @@ linux*)
     ;;
 esac
 
-
-alias du="du -h"
-alias df="df -h"
-
-alias su="su -l"
-alias mv="mv -i"
-alias rm="rm -i"
-
-
-## terminal configuration
+### terminal configuration
+##
+#case "${TERM}" in
+#screen)
+#    TERM=xterm
+#    ;;
+#esac
 #
-case "${TERM}" in
-screen)
-    TERM=xterm
-    ;;
-esac
-
-case "${TERM}" in
-xterm|xterm-color)
-    export LSCOLORS=exfxcxdxbxegedabagacad
-    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-    ;;
-kterm-color)
-    stty erase '^H'
-    export LSCOLORS=exfxcxdxbxegedabagacad
-    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-    ;;
-kterm)
-    stty erase '^H'
-    ;;
-cons25)
-    unset LANG
-    export LSCOLORS=ExFxCxdxBxegedabagacad
-    export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-    ;;
-jfbterm-color)
-    export LSCOLORS=gxFxCxdxBxegedabagacad
-    export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-    ;;
-esac
+#case "${TERM}" in
+#xterm|xterm-color)
+#    export LSCOLORS=exfxcxdxbxegedabagacad
+#    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+#    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+#    ;;
+#kterm-color)
+#    stty erase '^H'
+#    export LSCOLORS=exfxcxdxbxegedabagacad
+#    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+#    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+#    ;;
+#kterm)
+#    stty erase '^H'
+#    ;;
+#cons25)
+#    unset LANG
+#    export LSCOLORS=ExFxCxdxBxegedabagacad
+#    export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+#    zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+#    ;;
+#jfbterm-color)
+#    export LSCOLORS=gxFxCxdxBxegedabagacad
+#    export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+#    zstyle ':completion:*' list-colors 'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+#    ;;
+#esac
 
 #Title
 precmd() {
@@ -280,3 +271,14 @@ case "${TERM}" in
         }
         ;;
 esac
+
+
+export ZPLUG_LOADFILE=~/zplug.sh
+
+# only source zplug on initial load
+if [ -z ${RELOAD} ]; then
+    if ! [ type "zplug" > /dev/null 2>&1 ]; then
+        source ~/.zplug/init.zsh
+    fi
+fi
+
