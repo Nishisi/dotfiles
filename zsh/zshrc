@@ -11,7 +11,7 @@
 typeset -U path cdpath fpath manpath
 
 # source all .zsh files 
-for config ($HOME/.*.zsh) source $config
+for config ($HOME/.zsh/*.zsh) source $config
 
 ## Environment variable configuration
 #
