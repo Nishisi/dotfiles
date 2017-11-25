@@ -29,5 +29,5 @@ bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^?' backward-delete-char
 
-fpath=($ZSH/functions $fpath)
-autoload -U $ZSH/functions/*(:t)
+fpath=($HOME/.zsh/functions $fpath)
+autoload -U $HOME/.zsh/functions/*(:t)

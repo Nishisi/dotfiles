@@ -117,14 +117,8 @@ ln -snfv $PWD/vim/vimrc ~/.vimrc
 ln -snfv $PWD/vim/vim ~/.vim
 ln -snfv $PWD/tmux/tmux.conf ~/.tmux.conf
 ln -snfv $PWD/zsh/zshrc ~/.zshrc
-ln -snfv $PWD/zsh/aliases.zsh ~/.aliases.zsh
-ln -snfv $PWD/zsh/prompt.zsh ~/.prompt.zsh
-ln -snfv $PWD/zsh/colors.zsh ~/.colors.zsh
-ln -snfv $PWD/zsh/zplug.sh ~/.zplug.sh
-ln -snfv $PWD/zsh/git.zsh ~/.git.zsh
-ln -snfv $PWD/zsh/config.zsh ~/.config.zsh
-ln -snfv $PWD/zsh/completion.zsh ~/.completion.zsh
-ln -snfv $PWD/zsh/functions.zsh ~/.functions.zsh
+
+ln -snfv $PWD/zsh ~/.zsh
 
 
 # install zplug

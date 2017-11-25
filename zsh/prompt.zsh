@@ -75,5 +75,6 @@ precmd() {
 
 PROMPT_SYMBOL='❯'
 
-export PROMPT='%(?.%F{207}.%F{160})[%n@%C] $PROMPT_SYMBOL%f '
+#export PROMPT='%(?.%F{207}.%F{160})[%n@%C] $PROMPT_SYMBOL%f '
+export PROMPT='%{${fg[cyan]}%}[%n@%C] $PROMPT_SYMBOL%f '
 export RPROMPT='`git_dirty`%F{241}$vcs_info_msg_0_%f`git_arrows``suspended_jobs`'
