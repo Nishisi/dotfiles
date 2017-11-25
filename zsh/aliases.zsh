@@ -1,9 +1,17 @@
+
+# Detect which 'ls' flavor is in use
+if ls --color > /dev/null 2>&1; then
+    colorflag="--color" #GUN 'ls'
+else
+    colorflag="-G" # OS X 'ls'
+fi
+
 # ls {{{
-alias ls="ls -G"
-alias la="ls -a"
+alias l="ls -lah ${colorflag}"
+alias la="ls -a ${colorflag}"
 alias lf="ls -F"
-alias ll="ls -l"
-alias lla="ls -al"
+alias ll="ls -lFh ${colorflag}"
+alias lla="ls -AF"
 alias sl="ls"
 # }}}
 
@@ -26,3 +34,6 @@ alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # cd of peco
 alias pcd='cd $(ghq list -p | peco)'
+
+# Homebre
+alias brewu='brew update  && brew upgrade && brew cleanup && brew prune && brew doctor'

@@ -10,11 +10,8 @@
 # source {{{
 typeset -U path cdpath fpath manpath
 
-# EDITOR
-export EDITOR=vim
-
 # load files
-[[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
+[[ -f ~/.aliases.zsh ]] && source ~/.aliases.zsh
 
 ## Environment variable configuration
 #
@@ -34,7 +31,7 @@ esac
 #
 autoload -U colors; colors
 # 一般ユーザ時
-tmp_prompt="%F{cyan}[%n@ %C]%f "
+tmp_prompt="%F{cyan}[%n@%C]%f "
 #tmp_prompt="%{${fg[cyan]}%}%n%# %{${reset_color}%}"
 tmp_prompt2="%{${fg[cyan]}%}%_> %{${reset_color}%}"
 tmp_rprompt="%{${fg[green]}%}[%~]%{${reset_color}%}"
@@ -77,7 +74,6 @@ setopt nobeep            # ビープを鳴らさない
 setopt nolistbeep        # ビープを鳴らさない
 setopt ignoreeof         # Ctrl + dでシェルをとじない
 
-
 # }}}
 
 ## Keybind configuration
@@ -117,7 +113,7 @@ setopt share_history        # share command history data
 ## Completion configuration
 #
 fpath=(${HOME}/.zsh/functions/Completion ${fpath})
-autoload -U compinit -c
+autoload -U compinit
 compinit
 
 
@@ -215,9 +211,14 @@ precmd() {
 #
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
 
-# cowsay setteing
-#cowsay "Hello!"
+# sublime setting
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
+# cowsay setteing
+cowsay "Hello!"
+
+# locate setting
+alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 function cdls () {
     cd $1
@@ -225,27 +226,19 @@ function cdls () {
 }
 
 #自作binコマンドのパス設定
-#PATH=$PATH:$HOME/bin
+PATH=$PATH:$HOME/bin
 
 #指定したディレクトリに入る
-
 #最後のディレクトリの場所を覚える
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd chpwd_func
 function chpwd_func() {
   sed -i -e "s:^cd .* #catcat:cd $PWD #catcat:g" ~/.zshrc
 }
-cd /Users/nishiyama/.ghq/github.com/Nishisi/dotfiles/zsh #catcat
-
-#pythonライブラリのPATHの設定
-#set PYTHONPATH=$PYTHONPATH:$HOME/anaconda/lib/python3.5/site-packages
-export GOPATH=$HOME/.go
+cd /Users/Nishiyama #catcat
 
 # pip の一括アップグレード
-alias pip3_upgrade='pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U'
-
-# vimのPATH
-export PATH=/usr/local/bin:$PATH
+alias pip3_upgrade='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U'
 
 # pecoの検索機能
 function peco-history-selection() {
@@ -256,14 +249,6 @@ function peco-history-selection() {
 
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
-
-export PATH="/usr/local/ghc-7.10.2/bin:$PATH"
-
-export PATH="/Users/e145735/.cabal/bin:$PATH"
-
-
-# papixさんの設定パクリ
-
 
 # cd {{{
 function chpwd() {
@@ -279,54 +264,19 @@ zle -N cdup
 bindkey '^u' cdup
 # }}}
 
-# Haskell stackのパス設定
-#alias ghc='stack ghc --'
-#alias ghci='stack ghci --'
-#alias runhaskell='stack runhaskell --'
+
+alias chrm="open /Applications/Google\ Chrome.app"
+alias safari="open -a Safari"
 
 export TERM=xterm-256color
 
-export OPENSSL_INCLUDE="/usr/local/opt/openssl/include"
-export OPENSSL_LIB="/usr/local/opt/openssl/lib"
-
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PYENV_ROOT=/usr/local/var/pyenv
-
-# plenv
-if which plenv > /dev/null; then eval "$(plenv init - zsh)"; fi
-
-#export PATH="$PATH:$GOPATH/bin"
-
-function google() {
-	web_search "https://www.google.co.jp/search?&q=" "+" "" $@
-}
-
-        # 検索サイト クエリ で検索可能
-        function web_search {
-            local url=$1       && shift
-            local delimiter=$1 && shift
-            local prefix=$1    && shift
-            local query
-
-            while [ -n "$1" ]; do
-                if [ -n "$query" ]; then
-                    query="${query}${delimiter}${prefix}$1"
-                else
-                    query="${prefix}$1"
-                fi
-                shift
-            done
-
-            open "${url}${query}"
+autoload -Uz vcs_info
+# Improve terminal title
+case "${TERM}" in
+    kterm*|xterm*|vt100|st*|rxvt*)
+        precmd() {
+            echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+            vcs_info
         }
-
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-
- 
-export PATH=$GOPATH/bin:$PATH
-
-
-
-
+        ;;
+esac
