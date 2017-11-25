@@ -116,8 +116,9 @@ install_dotfiles () {
 ln -snfv $PWD/vim/vimrc ~/.vimrc
 ln -snfv $PWD/vim/vim ~/.vim
 ln -snfv $PWD/tmux/tmux.conf ~/.tmux.conf
-ln -snfv $PWD/zsh/zshrc ~/.zshrc
+ln -snfv $PWD/tmux/tmux.conf.local ~/.tmux.conf.local
 
+ln -snfv $PWD/zsh/zshrc ~/.zshrc
 ln -snfv $PWD/zsh ~/.zsh
 
 
