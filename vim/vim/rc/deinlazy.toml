@@ -5,12 +5,12 @@ hook_add = '''
 let g:neocomplete#enable_at_startup = 1
 '''
 
+
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
-
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -21,6 +21,10 @@ on_ft = 'perl'
 
 [[plugins]]
 repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'nsf/gocode'
 on_ft = 'go'
 
 [[plugins]]

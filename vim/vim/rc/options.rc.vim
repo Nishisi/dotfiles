@@ -1,3 +1,4 @@
+filetype plugin indent on
 set t_Co=256
 set encoding=utf-8
 
@@ -44,6 +45,7 @@ endfunction
 "
 au VimEnter * call NERDTreeHighlightFile('yml', '44', 'none', 'green', '#151515')
 au VimEnter * call NERDTreeHighlightFile('go', '115', 'none', 'yellow', '#151515')
+au VimEnter * call NERDTreeHighlightFile('vim', 'Magenta', 'none', '#ff00ff', '#151515')
 "au VimEnter * call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
 "au VimEnter * call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
 "au VimEnter * call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
