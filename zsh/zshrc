@@ -206,7 +206,7 @@ precmd() {
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 # cowsay setteing
-cowsay "Hello!"
+cowsay --aurora -f gopher 'Hello!!'
 
 # locate setting
 alias updatedb='sudo /usr/libexec/locate.updatedb'
@@ -226,7 +226,7 @@ add-zsh-hook chpwd chpwd_func
 function chpwd_func() {
   sed -i -e "s:^cd .* #catcat:cd $PWD #catcat:g" ~/.zshrc
 }
-cd /Users/Nishiyama #catcat
+cd $HOME #catcat
 
 # pip の一括アップグレード
 alias pip3_upgrade='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U'
