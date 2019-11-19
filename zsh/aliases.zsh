@@ -25,21 +25,15 @@ alias rm="rm -i"
 alias icloud='cd /Users/$USER/Library/Mobile\ Documents/com~apple~CloudDocs'
 # }}}
 
-# pip の一括アップグレード {{{
-alias pip_up='pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U'
-# }}}
-
-# sublime setting {{{
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-# }}}
+# pip の一括アップグレード
+alias pip3_upgrade='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U'
 
 # locate setting {{{
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 # }}}
 
-
 # cd of peco
 alias pcd='cd $(ghq list -p | peco)'
 
 # Homebre
-alias brewu='brew update  && brew upgrade && brew cleanup && brew prune && brew doctor'
+alias brewu='brew update  && brew upgrade && brew cleanup && brew doctor'

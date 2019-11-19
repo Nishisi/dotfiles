@@ -202,14 +202,8 @@ precmd() {
 #
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
 
-# sublime setting
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-
 # cowsay setteing
 cowsay --aurora -f gopher 'Hello!!'
-
-# locate setting
-alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 function cdls () {
     cd $1
@@ -228,8 +222,6 @@ function chpwd_func() {
 }
 cd $HOME #catcat
 
-# pip の一括アップグレード
-alias pip3_upgrade='pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U'
 
 # pecoの検索機能
 function peco-select-history {
@@ -253,9 +245,6 @@ function cdup() {
 zle -N cdup
 bindkey '^u' cdup
 # }}}
-
-
-alias chrm="open /Applications/Google\ Chrome.app"
 
 export TERM=xterm-256color
 
